@@ -1,0 +1,451 @@
+#poststuff .grill-box .inside {
+    margin: 0;
+    padding: 0;
+}
+
+ul.grill-tabs-nav {
+	margin: 1em 1em 0;
+	padding: 0;
+	z-index: 99;
+	position: relative;
+}
+
+ul.grill-tabs-nav li {
+	display: inline;
+	margin-left: -1px;
+}
+
+ul.grill-tabs-nav li:first-child {
+	margin-left: 0px;
+}
+
+ul.grill-tabs-nav li a {
+	background: #f1f1f1;
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px solid #d9d9d9;
+	border-bottom: none;
+	text-decoration: none;
+	color: #ccc;
+}
+
+ul.grill-tabs-nav li a:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+ul.grill-tabs-nav li.active a {
+	background: #ffffff;
+	color: #333;
+    top: 1px;
+    position: relative;
+    padding-bottom: 10px;
+    padding-top: 11px;
+}
+
+ul.grill-tabs-nav li.active a span {
+    top: -1px;
+    position: relative;
+	
+}
+
+.grill-field-description {
+	font-size: 12px;
+    line-height: 1.2;
+    margin: .5em 0;
+    color: #999;
+}
+
+.grill-fields-section {
+	border-top: 1px solid #d9d9d9;
+}
+
+.grill-group {
+	border: 1px solid #d9d9d9;
+	margin: 10px;
+	position: relative;
+}
+
+.grill-group {
+	border: 1px solid #d9d9d9;
+	margin: 20px;
+	position: relative;
+}
+
+.grill-group .grill-delete-field {
+	border-radius: 50%;
+    cursor: pointer;
+    height: 25px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 25px;
+}
+
+.grill-group .grill-delete-field:focus {
+	outline: none;
+	border-color: #333;
+}
+
+.grill-group .grill-delete-field-string {
+	display: none;
+	text-indent: -99999px;
+}
+
+.grill-fields-section > .grill-fields-row:first-child {
+	border-top: 0;
+}
+
+.grill-section-description {
+	padding: 0 10px;
+}
+
+.grill-fields-container label {
+    display: block;
+    padding: 2px 0;
+    color: #000;
+}
+
+.grill-field label {
+    padding-bottom: 6px;
+    font-weight: bold;
+}
+
+.grill-fields-container li.grill-metabox .grill-metabox-description {
+	margin-left: 135px;
+	font-size: .875em;
+	color: #999;
+}
+
+.grill-fields-container li.grill-metabox-checkbox .grill-metabox-description {
+	margin-left: 0;
+}
+
+.grill-fields-container li.grill-metabox {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 12px 0px; 
+	margin-bottom: 0;
+}
+
+.grill-fields-container .grill-field {
+	padding: 10px;
+}
+
+.grill-fields-container .grill-fields-row + .grill-field,
+.grill-fields-container .grill-field + .grill-field {
+    border-top: 1px solid #d9d9d9;
+}
+
+.grill-fields-container li.grill-metabox:last-child {
+	border-bottom: none;
+}
+
+.grill-field input[type="text"], 
+.grill-field textarea {
+	display: block;
+	padding: 4px 5px 3px;
+	width: 100%;
+	resize: vertical;	
+}
+
+.grill-field select {
+    width: 100%;
+}
+
+.grill-field .grill-select-color {
+	float: left;
+}
+
+.grill-field input.grill-field-gmap_search {
+	width: 60%;
+}
+
+.grill-field a.grill-field-gmap_search-button,
+.grill-field input.grill-field-gmap_search {
+	display: inline-block;
+	margin: 1em 0;
+}
+
+#TB_ajaxContent {
+	height: 100% !important;
+	width: 100% !important;
+	padding: 0 !important;
+	background: #fff;
+}
+
+.grill-fa-modal {
+	padding: 10px;
+	text-align: center;
+}
+
+.grill-fa-modal .grill-fa,
+.grill-fa-modal .grill-fa:focus {
+	float: left;
+    text-align: center;
+    vertical-align: middle;
+    outline: 0;
+}
+
+.grill-fa-modal .grill-fa input {
+	display: none;
+}
+
+.grill-fa-modal .grill-fa a {
+	color: #C2C2C2;
+    display: inline-block;
+	border: 1px solid #fff;
+    padding: 8px;
+	width: 25px;
+}
+
+.grill-fa-modal .grill-fa a:focus,
+.grill-fa-modal .grill-fa.selected a,
+.grill-fa-modal .grill-fa a:hover {
+	color: #666666;
+	-webkit-box-shadow: none;
+	box-shadow: none;	
+}
+
+.grill-fa-modal .grill-fa.selected a {
+	border: 1px solid #0074a2;
+	color: #0074a2;
+}
+
+.grill-fa-modal .grill-fa i.fa {
+	font-size: 1.7em;
+}
+
+.grill-fa-modal .grill-fa i.fa:focus {
+	outline: 0;
+}
+
+.grill-fa-modal .grill-fa .tooltip {
+	display: none;
+}
+
+.grill-field .grill-fa-holder:after {
+	content: " ";
+	clear: left;
+	display: block;
+}
+
+/*
+.grill-field .grill-fa-holder {
+	max-height: 200px;
+	overflow-y: scroll;
+}
+*/
+
+.fa-select {
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+.fa-clear {
+    font-size: 12px;
+    top: 5px;
+    margin-left: 5px;
+    position: relative;
+}
+
+.grill-fa-clear:after {
+	content: " ";
+	clear: left;
+	display: block;
+}
+
+.grill-fa-preview {
+	padding: 10px;
+    border: 1px dashed #333;
+    vertical-align: middle;
+    text-align: center;
+    float: left;
+    margin-right: 10px;
+}
+
+.grill-fa-preview i {
+    min-height: 20px;
+    min-width: 25px;
+    display: block;
+}
+
+.grill-fields-row {
+    display: table;
+    width: 100%;
+    border-top: 1px solid #d9d9d9;
+}
+
+.grill-fields-container .grill-fields-row:first-child {
+	border-top: none;
+}
+
+.grill-fields-container .grill-fields-row > .grill-field {
+	display: table-cell;
+    min-width: 0;
+    vertical-align: top;
+    border: 0;	
+}
+
+.grill-fields-row > .grill-field + .grill-field {
+    border-left: 1px solid #d9d9d9;
+}
+
+.insert-post-type .dashicons {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    vertical-align: text-top;
+    color: #82878C;
+    font-size: 18px;		
+}
+
+.postbox .grill-image-display {
+	position: relative;
+	width: 100%;
+}
+
+.postbox .grill-background-image-holder,
+.postbox .placeholder {
+	border: 1px solid #e5e5e5;
+	background: #f1f1f1;
+	width: 100%;
+	height: 200px;	
+	border-radius: 3px;
+	z-index: 50;
+	overflow: hidden;
+}
+
+.postbox .grill-background-image-holder img {
+	width: 100%;
+}
+
+.postbox .grill-image-display a.grill-image-remove {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 99;
+	text-decoration: none;
+	color: #333;
+}
+
+.postbox .grill-image-display a.grill-image-remove:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.postbox .grill-image-button {
+	margin: .5em 0 0 0;
+	width: 100%;
+}
+
+.postbox .placeholder .dashicons {
+	left: 50%;
+	top: 50%;
+	margin: -10px 0 0 -10px;
+	position: relative;
+}
+
+.postbox .grill-metabox-title {
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.postbox h4.grill-metabox-title {
+	margin: 1em 0;
+}
+
+.postbox .grill-metabox-color .wp-picker-container {
+	position: relative;
+}
+
+.postbox .grill-metabox-color .wp-picker-holder {
+	z-index: 99;
+	position: relative;
+}
+
+/*****
+/*  ~file uploads
+*****/
+
+.grill-file-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border: 1px dashed #ccc;
+    text-align: center;	
+}
+
+.grill-file-wrapper.grill-file-preview {
+	position: relative;
+    box-shadow: inset 0 0 15px rgba(0,0,0,.1), inset 0 0 0 1px rgba(0,0,0,.05);
+    background: #eee;
+    cursor: pointer;
+    line-height: 24px;
+}
+
+.grill-file-holder .filename {
+	position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    max-height: 100%;
+    word-wrap: break-word;
+    text-align: center;
+    font-weight: 600;
+    background: rgba(255,255,255,.8);
+	box-shadow: inset 0 0 0 1px rgba(0,0,0,.15);
+	font-size: 10px;
+}
+
+.grill-file-wrapper .grill-file-upload {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.grill-file-wrapper .grill-remove-file:before {
+    background: #24282d;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.grill-file-wrapper .grill-remove-file {
+	cursor: pointer;
+	text-decoration: none;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+
+.grill-file-wrapper img {
+	position: absolute;
+    left: 50%;
+    top: 50%;
+/*     margin-top: -14px; */
+    max-width: 100%;
+    height: auto;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);	
+}
+
+/*****
+/*  ~Select2
+*****/
+
+.select2-results__options dd,
+.select2-results__options li,
+.select2-selection__rendered dd,
+.select2-selection__rendered li {
+	margin-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 960px) {
+	.postbox .floatleft,
+	.postbox .col-2 {
+		float: none;
+		width: 100%;
+	}
+}

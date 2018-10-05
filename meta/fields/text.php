@@ -1,0 +1,1 @@
+<input type="text" name="<?php echo $this->get_the_name_attr(); ?>" id="<?php echo $this->id; ?>" value="<?php echo esc_attr( $this->get_value() ); ?>" size="30" /> 

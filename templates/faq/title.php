@@ -1,0 +1,1 @@
+<h3 class="entry-title"><i class="fa fa-angle-down"></i><?php the_title(); ?></h3>

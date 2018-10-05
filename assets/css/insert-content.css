@@ -1,0 +1,69 @@
+.insert-post-form .media-sidebar {
+	width:40%;
+}
+
+.insert-post-form .media-content {
+	width:55%;
+	padding:15px;
+	height:100%;
+	overflow-y:scroll;
+}
+
+.insert-post-form .media-frame-content {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	height:auto;
+	width:auto;
+	margin:0;
+	overflow:auto;
+	background:#fff;
+	border-top:none;
+	border-bottom:1px solid #ddd;
+}
+
+.insert-post-form .description {
+	color:#999;
+	font-size:12px;
+	font-style:italic;
+	text-align:right;
+}
+
+.insert-post-form h3.view-name {
+	font-size:14px;
+	max-width:682px;
+	position:absolute;
+	left:10px;
+	bottom:5px;
+	padding:4px 10px;
+	margin-bottom:4px;
+	color:#fff;
+	background:rgba(30,30,30,0.9);
+	text-shadow:0 1px 3px rgba(0,0,0,0.4);
+	-webkit-box-shadow:0 0 30px rgba(255,255,255,0.1);
+	-moz-box-shadow:0 0 30px rgba(255,255,255,0.1);
+	box-shadow:0 0 30px rgba(255,255,255,0.1);
+	-webkit-border-radius:8px;
+	border-radius:8px;
+}
+
+.insert-post-form .attachment {
+	border:1px solid #ccc;
+	cursor:pointer;
+	position:relative;
+	width:90%;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	margin-bottom:10px;
+}
+
+.insert-post-form .attachment img {
+	width:100%;
+}
+
+.insert-post-form input[type=checkbox] {
+	width:16px!important;
+}

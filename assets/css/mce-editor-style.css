@@ -1,0 +1,23 @@
+.mce-app-wrapper {
+	background-color:rgba(0,0,0,0.1);
+	border:1px solid rgba(0,0,0,0.1);
+	position:relative;
+	width:99.99%;
+	display:block;
+	clear:both;
+	cursor:pointer;
+}
+
+.mce-app-wrapper h2 {
+	color:#82878C;
+	cursor:pointer;
+	z-index:9999;
+	text-align:center;
+	font-size:14px;
+	line-height:1.6;
+	text-transform:capitalize;
+}
+
+.mce-app-wrapper h2 i.dashicons {
+	margin-right:5px;
+}
