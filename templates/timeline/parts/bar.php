@@ -1,1 +1,0 @@
-<div class="timeline-bar"></div>

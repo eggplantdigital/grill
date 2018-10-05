@@ -21,6 +21,8 @@
 
 .entry-title .fa {
 	margin-right: 5px; 
+	top: 3px;
+    position: relative;
 }	
 
 .ico-holder.ico-size-tiny { width: 50px; height: 50px; }
@@ -39,10 +41,10 @@
 /*  ~circular images
 *****/
 
-.grill .post-thumbnail.circleimg {
+.list .post-thumbnail.circleimg,
+.grid .post-thumbnail.circleimg {
 	border-radius: 50%;
 	overflow: hidden;
-	margin: 0 auto 10px;
 }
 
 .grid .col-sm-2 .post-thumbnail.circleimg { width: 150px; height: 150px; }
@@ -72,9 +74,22 @@
 }
 
 .grid .entry-title,
+.grid .entry-content,
 .grid .has-post-thumbnail .post-thumbnail {
 	margin-top: 0em;
 	margin-bottom: .8em;
+}
+
+.grid .entry-header,
+.grid .entry-content,
+.grid .entry-footer {
+	padding: 0;
+}
+
+.list a,
+.grid a {
+	border: none !important;
+	text-decoration: none;
 }
 
 /*****
@@ -92,6 +107,12 @@
 	margin-right: 20px;		
 }
 
+.list .entry-content,
+.list .entry-header,
+.list .entry-footer {
+	padding: 0;
+}
+
 .list article:after {
 	content: " ";
 	display: block;
@@ -106,110 +127,61 @@
 /*  ~faq
 *****/
 
-.faq-list-wrapper article {
+.grill_faq_wrapper article {
 	margin-bottom: 20px;
 }
 
-.faq-list-wrapper .entry-header h3 {
+.grill_faq_wrapper .entry-header h3 {
 	margin-top: 0;
+	cursor: pointer;
 }
 
-.faq-list-wrapper .entry-header {
+.grill_faq_wrapper .entry-header {
 	width: 100%;
 	float: none;
 	margin-right: 0;
 }
 
-.faq-list-wrapper .entry-content {
+.grill_faq_wrapper .entry-content {
 	margin-left: 0;
 }
 
-.faq-list-wrapper .entry-title a {
+.grill_faq_wrapper .entry-title a {
 	display: block;
 }
 
-.faq-list-wrapper .entry-title i.fa {
+.grill_faq_wrapper .entry-title i.fa {
 	float: right;
     transform: rotate( -360deg );            
     transition: transform 500ms ease;	
 }
 
-.faq-list-wrapper .entry-title.active i.fa {
+.grill_faq_wrapper .entry-title.active i.fa {
     transform: rotate( -180deg );            
     transition: transform 500ms ease;	
 }
 
-.faq-list-wrapper .entry-content {
+.grill_faq_wrapper .entry-content {
 	display: none;
 	padding: 30px;
 	background: #F3F3F3;
 	color: #333;
 }
 
-.faq-list-wrapper .entry-content p:first-child {
+.grill_faq_wrapper .entry-content p:first-child {
 	margin-top:  0;
 }
 
-.faq-list-wrapper article {
+.grill_faq_wrapper article {
 	border-bottom: 1px solid #F3F3F3;
 }
 
 /*****
-/*  ~donate
+/*  ~team
 *****/
 
-.donate-grid-wrapper .entry-header input[type="text"] {
-	width: 50%;
-	margin-right: 5px;
-	top: -6px;
-	position: relative;	
-}
-
-/*****
-/*  ~timeline
-*****/
-
-.timeline-wrap {
-	position: relative;
-}
-
-.timeline-bar {
-    z-index: -999;
-    content: '';
-    display: block !important;
-    position: absolute;
-    width: 1px;
-    top: 30px;
-    bottom: 0;
-    margin-left: 15px;
-    background-color: #9ebb00;
-    border-radius: 4px;
-}
-
-.timeline-wrap:last-child .timeline-bar {
-	background: none;
-}
-
-.timeline-icon {
-	background: #9ebb00;
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	text-align: center;
-	z-index: 100;
-	float: left;
-}
-
-.timeline-icon .fa {
-	color: #fff;
-	top: 1px;
-	position: relative;
-	font-size: 12px;
-}
-
-.timeline-event {
-	margin-left: 60px;
-    text-align: left;
+.team .entry-title {
+	margin-bottom: 0;	
 }
 
 /*****

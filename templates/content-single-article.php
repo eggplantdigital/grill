@@ -30,15 +30,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php 
-		grill_get_template_part( 'global/icon' );
-		grill_get_template_part( 'global/title' );
-		grill_get_template_part( 'global/image' );
-		?>
-	</header>
+	<?php grill_get_template_part( 'global/image' ); ?>
 	<div class="entry-content">
 		<?php
+		grill_get_template_part( 'global/title', 'single' );			
 		grill_get_template_part( 'global/content' ); 
 		?>
 	</div>

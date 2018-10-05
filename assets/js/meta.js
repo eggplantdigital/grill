@@ -24,6 +24,9 @@ var GrillMeta = {
 		
 		// When toggling the display of the meta box container - reinitialize
 		jQuery( document ).on( 'click.GrillMeta', '.postbox h3, .postbox .handlediv', GrillMeta.init );	
+
+		// Load the color picker on the grill input box selector
+	    $('.grill-select-color').wpColorPicker();
 		
 		GrillMeta.doneInit();
 

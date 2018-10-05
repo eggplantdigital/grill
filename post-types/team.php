@@ -76,13 +76,13 @@ $team->register_taxonomy( 'team_group', array(
 $team->register_template( 'grid', array(
 	'label'      => 'Grid',
 	'screenshot' => GRILL_URL . '/assets/img/view-team-grid.png',
-	'template'	 => GRILL_DIR . 'templates/view-grid.php'
+	'template'	 => array( 'slug' => 'view', 'name' => 'grid' )
 ));
 
 $team->register_template( 'list', array(
 	'label'      => 'List',
 	'screenshot' => GRILL_URL . '/assets/img/view-team-list.png',
-	'template'	 => GRILL_DIR . 'templates/view-list.php'
+	'template'	 => array( 'slug' => 'view', 'name' => 'list' )
 ));
 
 $team->register_shortcode( 'grill_team', array(

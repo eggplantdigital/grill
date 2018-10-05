@@ -53,24 +53,7 @@ function grill_post_thumbnail( $size = 'post-thumbnail', $args = '', $attr = '' 
 		echo $thumbnail;
 	} else {
 		return $thumbnail;
-	}	
-	
-/*
-	
-	if ( is_single() ) : ?>
-	
-		<div class="post-thumbnail">
-			<?php the_post_thumbnail( $size, $attr ); ?>
-		</div><!-- .post-thumbnail -->
-	
-	<?php 
-	else : ?>
-
-	<a class="post-thumbnail <?php //echo ($sc_atts["circleimg"]=='true') ? 'popup-ajax' : ''; ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-		<?php the_post_thumbnail( $size, $attr ); ?>
-	</a><!-- .post-thumbnail -->
-*/
-
+	}
 }
 endif;
 

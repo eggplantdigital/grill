@@ -103,7 +103,7 @@ class Grill_Group extends Grill_Field {
 		// Set values for this field.
 		if ( ! empty( $value ) ) {
 			foreach ( $value as $field_id => $field_value ) {
-				$field_value = ( ! empty( $field_value ) ) ? $field_value : array();
+				$field_value = ( $field_value || '0' === $field_value ) ? $field_value : '';
 				if ( ! empty( $fields[ $field_id ] ) ) {
 					$fields[ $field_id ]->set_value( $field_value );
 				}

@@ -20,7 +20,7 @@
             }
 		});
 		
-		$('.faq-list-wrapper h3').each(function() {
+		$('.grill_faq_wrapper h3').each(function() {
 			var tis = $(this), state = false, answer = tis.parent().next('div').hide().css('height','auto').slideUp();
 			tis.click(function(e) {
 				e.preventDefault();

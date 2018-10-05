@@ -53,31 +53,6 @@ $faq->register_shortcode( 'grill_faq', array(
 			'views'	  => array('grid','list')
 		),
 		array(
-			'name'	  => __('Columns', 'grill'),
-			'desc'	  => __('Select the number of columns you would like to display', 'grill'),
-			'std'	  => 1,
-			'id'	  => 'cols',
-			'type'	  => 'select',
-			'views'	  => array('list'),
-			'options' => array(
-				'1' => '1',
-				'2' => '2',
-			)
-		),		
-		array(
-			'name'	  => __('Content', 'grill'),
-			'desc'	  => __('Use the main content or show a shorter excerpt.', 'grill'),
-			'std'	  => 'excerpt',
-			'type'	  => 'select',
-			'id'	  => 'content_body',
-			'views'	  => array('grid', 'list'),
-			'options' => array(
-				'fulltext' => 'Full Text',
-				'excerpt'  => 'Excerpt',
-				'none'     => 'None'
-			)
-		),		
-		array(
 			'name'	  => __('FAQ Group', 'grill'),
 			'desc'	  => __('Only display one group by selecting it from the list', 'grill'),
 			'id'	  => 'gid',

@@ -75,30 +75,6 @@ vc_map( array(
 	'params'        => $post_params
 ) );
 
-  // Testimonials Shortcode Options
-// ----------------------------------------------------------------------------------
-
-$post_params[] = array(
-	'type'	  	  => 'grill_term_select',
-	'heading'	  => __('Group', 'grill'),
-	'description' => __('Only display one group by selecting it from the list', 'grill'),
-	'param_name'  => 'gid',
-	'value' => array(
-		'testimonial_group',
-		array(
-			'hide_empty' => false
-		)			
-	)
-);
-
-vc_map( array(
-	'name'          => 'Testimonials',
-	'base'          => 'grill_testimonial',
-	'icon'          => 'dashicons-testimonial',
-	'description'   => 'Insert your testimonials',
-	'params'        => $post_params
-) );
-
   // Team Shortcode Options
 // ----------------------------------------------------------------------------------
 
@@ -183,62 +159,6 @@ vc_map( array(
 	'icon'          => 'dashicons-format-gallery',
 	'description'   => 'Insert your slider',
 	'params'        => $slider_params
-) );
-
-  // Timeline Options
-// ----------------------------------------------------------------------------------
-
-$timeline_params = array(
-	array(
-		'type'        => 'textfield',
-		'heading'     => __('Timeline Event Title', 'grill'),
-		'param_name'  => 'title',
-		'description' => __( 'Enter foo.', 'my-text-domain' )
-	),
-	array(
-		'type'        => 'textfield',
-		'heading'     => __('Timeline Event Day', 'grill'),
-		'param_name'  => 'day',
-		'description' => __( 'Enter foo.', 'my-text-domain' )
-	),
-	array(
-		'type'        => 'textfield',
-		'heading'     => __('Timeline Event Month', 'grill'),
-		'param_name'  => 'month',
-	),	
-	array(
-		'type'        => 'textfield',
-		'heading'     => __('Timeline Event Year', 'grill'),
-		'param_name'  => 'year',
-	),		
-	array(
-	    "type" => "textarea_html",
-	    "holder" => "div",
-	    "class" => "",
-	    "heading" => __( "Content", "my-text-domain" ),
-	    "param_name" => "content",
-	    "value" => __( "<p>I am test text block. Click edit button to change this text.</p>", "my-text-domain" ),
-	    "description" => __( "Enter your content.", "my-text-domain" )
-	),
-);
-
-vc_map( array(
-	'name'          => 'Timeline Event',
-	'base'          => 'grill_timeline_block',
-	'icon'          => 'dashicons-format-gallery',
-	'description'   => 'Create a timeline using timeline events',
-	'params'        => $timeline_params
-) );
-
-  // Location Shortcode Options
-// ----------------------------------------------------------------------------------
-
-vc_map( array(
-	'name'          => 'Locations',
-	'base'          => 'grill_location',
-	'icon'          => 'dashicons-testimonial',
-	'description'   => 'Add your location to the page',
-	'params'        => $post_params
 ) );
 
 endif;

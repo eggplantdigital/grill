@@ -111,4 +111,29 @@ function is_grill_taxonomy() {
 		return false;
 }
 endif;
+
+if ( ! function_exists( 'grill_get_setting' ) ) :
+/**
+ * Get Setting
+ *
+ * Get a setting for the current post type.
+ *
+ * @since 	1.0.1
+ * @return 	boolean
+ */	
+function grill_get_setting( $setting, $post_type=false ) {
+	
+	if ( ! $post_type )
+		$post_type = get_post_type();
+	
+	$grill_settings = get_option('grill_settings');
+	
+	if ( isset( $grill_settings["_{$setting}_{$post_type}"] ) ) {
+		return $grill_settings["_{$setting}_{$post_type}"];
+	} else {
+		return false;
+	}
+}
+endif;
+
 ?>

@@ -19,7 +19,6 @@ $args = array(
 $project = new Grill_Post_Types( 'project', $args );
 
 $project->register_metabox( 'fontawesome' );
-$project->register_metabox( 'link' );
 
 $project->register_taxonomy( 'project_group', array(
 	'plural'	=> 'Project Groups',
@@ -30,13 +29,13 @@ $project->register_taxonomy( 'project_group', array(
 $project->register_template( 'grid', array(
 	'label'      => 'Grid',
 	'screenshot' => GRILL_URL . '/assets/img/view-project-grid.png',
-	'template'	 => array( 'slug' => 'view', 'name' => 'grid' ) //GRILL_DIR . '/templates/view-grid.php'
+	'template'	 => array( 'slug' => 'view', 'name' => 'grid' )
 ));
 
 $project->register_template( 'list', array(
 	'label'      => 'List',
 	'screenshot' => GRILL_URL . '/assets/img/view-project-list.png',
-	'template'	 => GRILL_DIR . '/templates/view-list.php'
+	'template'	 => array( 'slug' => 'view', 'name' => 'list' )
 ));
 
 $project->register_shortcode( 'grill_project', array(

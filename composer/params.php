@@ -1,5 +1,7 @@
 <?php
-	
+
+if ( function_exists('vc_add_shortcode_param') ) :
+
 function grill_term_select( $settings, $value ) {
 
     $css_option = vc_get_dropdown_option( $settings, $value );
@@ -28,7 +30,6 @@ function grill_term_select( $settings, $value ) {
 		
 	return $output;
 }
-
 vc_add_shortcode_param( 'grill_term_select', 'grill_term_select' );
 
 	
@@ -38,3 +39,5 @@ function grill_hidden( $settings, $value ) {
              esc_attr( $settings['type'] ) . '_field" type="text" value="' . esc_attr( $value ) . '" />';
 }
 vc_add_shortcode_param( 'grill_hidden', 'grill_hidden' );
+
+endif;

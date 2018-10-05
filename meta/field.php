@@ -49,7 +49,7 @@ class Grill_Field {
 			'show_label'          => false,
 			'readonly'            => false,
 			'disabled'            => false,
-			'default'             => '',
+			'std'             	  => '',
 			'width'               => '',
 			'string-repeat-field' => __( 'Add New', 'grill' ),
 			'string-delete-field' => __( 'Remove', 'grill' ),
@@ -121,9 +121,9 @@ class Grill_Field {
 
 		// Print description if necessary.
 		$this->description();
-						
+
 		// Close of the field
-		$this->get_field_wrapper_end( $field );
+		$this->get_field_wrapper_end();
 		
 	}
 	
@@ -204,7 +204,7 @@ class Grill_Field {
 	 *
 	 * 
 	 */	
-	function get_field_wrapper_end( $field ) {
+	function get_field_wrapper_end() {
 		?>
 		</div>
 		<?php
@@ -304,6 +304,7 @@ class Grill_Field {
 	 * @return mixed
 	 */
 	public function get_value() {
+		
 		return ( $this->value || '0' === $this->value  ) ? $this->value : $this->args['std'];
 	}
 

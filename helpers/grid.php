@@ -50,7 +50,8 @@ class Grill_Grid {
 	
 	function items_per_row() {
 		global $sc_atts;
-		if ( $sc_atts['cols'] )
+		
+		if ( isset( $sc_atts['cols'] ) )
 			$cols = $sc_atts['cols'];
 		else
 			$cols = 1;	

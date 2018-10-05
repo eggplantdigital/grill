@@ -36,7 +36,7 @@ class Grill_Meta_Box {
 	 * @param array $settings User submitted options.
 	 */
 	public function __construct( $post_type = 'post', $args=array() ) {
-				
+
 		$this->_meta_box = $args;
 		
 		$this->post_type = $post_type;
@@ -75,30 +75,33 @@ class Grill_Meta_Box {
 	 */	
 	public function init_fields( $post_id=0 ){
 
-		foreach ( $this->_meta_box['fields'] as $field ) {
+		if ( $this->_meta_box['fields'] ) {
 
-			$value = '';
-
-			$args = $field;
-			unset( $args['id'] );
-			unset( $args['name'] );
-			
-			// Get metadata value of the field for this post.
-			$value = get_post_meta( $post_id, $field['id'], true );
-
-			if ( /* $field['repeatable'] &&  */ $field['type'] == 'group' ) {		
+			foreach ( $this->_meta_box['fields'] as $field ) {
 	
-				$field = new Grill_Group( $field['id'], $field['label'], $value, $args );				
+				$value = '';
+	
+				$args = $field;
+				unset( $args['id'] );
+				unset( $args['name'] );
 				
-			} else {
-
-				$field = new Grill_Field( $field['id'], $field['label'], $value, $args );
-				
+				// Get metadata value of the field for this post.
+				$value = get_post_meta( $post_id, $field['id'], true );
+	
+				if ( /* $field['repeatable'] &&  */ $field['type'] == 'group' ) {		
+		
+					$field = new Grill_Group( $field['id'], $field['label'], $value, $args );				
+					
+				} else {
+	
+					$field = new Grill_Field( $field['id'], $field['label'], $value, $args );
+					
+				}
+	
+	//			if ( $field->is_displayed( $post_id ) ) {
+					$this->fields[] = $field;
+	//			}
 			}
-
-//			if ( $field->is_displayed( $post_id ) ) {
-				$this->fields[] = $field;
-//			}
 		}
 	}
 
@@ -146,7 +149,7 @@ class Grill_Meta_Box {
 		wp_enqueue_style( 'select2', GRILL_URL . '/assets/css/select2.min.css' );
 		wp_enqueue_script( 'select2', GRILL_URL . '/assets/js/select2.min.js', array('jquery') );
 		//wp_enqueue_script( 'grill-meta-select2-js', GRILL_URL . '/assets/js/meta.select2.js', array( 'jquery', 'select2' ) ); 
-		
+	
 		wp_enqueue_script( 'grill-meta-file-js', GRILL_URL . '/assets/js/meta.file.js', array( 'jquery' ));
         wp_enqueue_script( 'grill-meta-js', GRILL_URL . '/assets/js/meta.js', array( 'jquery', 'wp-color-picker' ) );
 		wp_localize_script( 'grill-meta-js', 'GrillMetaData', array(
@@ -168,6 +171,7 @@ class Grill_Meta_Box {
 	function enqueue_styles() {
 		
 		wp_enqueue_style(  'grill-meta-styles', GRILL_URL . '/assets/css/meta.css', false, '1.0.0' );
+		wp_enqueue_style( 'fontawesome'	, GRILL_URL . '/assets/css/font-awesome.min.css', false, '4.2.0');	
 
 		foreach ( $this->fields as $field ) {
 			$field->enqueue_styles();
@@ -284,7 +288,11 @@ class Grill_Meta_Box {
 			<?php $row = true;
 				
 			endif;
-			
+
+			if ( $field->args['width'] == '' ) {
+				$field->args['width'] = 100;
+			}
+
 			$current_width += $field->args['width'];
 
 /* TODO - need this soon
@@ -519,7 +527,7 @@ class Grill_Background_Meta_Box extends Grill_Meta_Box {
 		$this->post_type = $post_type;
 		
 		// Create the settings for this meta box 
-		$settings = array(
+		$this->_meta_box = array(
 			'id'		 => 'background',
 			'title'      => __('Background', 'grill'),
 			'pages'      => array( $this->post_type ),
@@ -585,8 +593,6 @@ class Grill_Background_Meta_Box extends Grill_Meta_Box {
 			)
 		);
 		
-		$this->settings = (object) $settings;
-		
 		// Initiate the meta box
 		$this->init();
 	}
@@ -644,7 +650,7 @@ class Grill_Link_Meta_Box extends Grill_Meta_Box {
 		$this->post_type = $post_type;
 		
 		// Create the settings for this meta box 
-		$settings = array(
+		$this->_meta_box = array(
 			'id'		 => 'link',
 			'title'      => __('Link / Button', 'grill'),
 			'context'    => 'normal',
@@ -681,8 +687,6 @@ class Grill_Link_Meta_Box extends Grill_Meta_Box {
 			)
 		);
 		
-		$this->settings = (object) $settings;
-		
 		// Initiate the meta box
 		$this->init();		
 	}
@@ -718,7 +722,7 @@ class Grill_Text_Meta_Box extends Grill_Meta_Box {
 		$this->post_type = $post_type;
 		
 		// Create the settings for this meta box 
-		$settings = array(
+		$this->_meta_box = array(
 			'id'		 => 'text',
 			'title'      => __('Text', 'grill'),
 			'context'    => 'normal',
@@ -771,8 +775,6 @@ class Grill_Text_Meta_Box extends Grill_Meta_Box {
 			)
 		);
 		
-		$this->settings = (object) $settings;
-		
 		// Initiate the meta box
 		$this->init();		
 	}	
@@ -817,7 +819,7 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 		$fa_list = $this->get_fontawesome_icons_list();
 		
 		// Create the settings for this meta box 
-		$settings = array(
+		$this->_meta_box = array(
 			'id'		 => 'fontawesome',
 			'title'      => __('Icons', 'grill'),
 			'context'    => 'normal',
@@ -847,7 +849,7 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 					'label' => __('Background Color', 'grill'),
 					'id'    => '_fontawesome_bg_color',
 					'type'  => 'color',
-					'width' => 50
+					'width' => 50,
 				),
 				array(
 					'label' => __('Color', 'grill'),
@@ -859,8 +861,6 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 			)
 		);
 		
-		$this->settings = (object) $settings;
-		
 		// Initiate the meta box
 		$this->init();		
 	}
@@ -870,10 +870,13 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 	 * 
 	 * Enqueue background iamge related scripts.
 	 */
-	function enqueue() {
+	function enqueue_scripts() {
 	
 		// Enqueue the media panel.
         wp_enqueue_media();
+		
+		// Enqueue the fontawesome
+		wp_enqueue_script( 'grill-meta-fa-js', GRILL_URL . '/assets/js/meta.fa.js', array( 'jquery' ));	
         
         // Enqueue metabox styling
 		wp_enqueue_style( 'grill-meta-css', GRILL_URL.'/assets/css/meta.css', false, '1.5.0' );
@@ -899,7 +902,7 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
  	public function get_fontawesome_icons_list() {
  		
 		$fa_json  = wp_remote_fopen( GRILL_URL . '/assets/fonts/fontawesome.json' );
-		
+
 		return $this->json_decode( $fa_json, true );
 	}
 	

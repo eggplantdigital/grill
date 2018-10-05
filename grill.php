@@ -96,12 +96,15 @@ class Grill_Core {
 		define('GRILL_MIN_WP_VERSION', '3.5');
 
 		// TODO MOVE THIS
-		$grill_options = get_option( 'grill_options' );
+		$grill_options = array();
 		
-		if ( is_array( $grill_options ) && $grill_options['_gmaps_api_key'] ) {
-			define( 'GOOGLE_API_KEY', $grill_options['_gmaps_api_key'] );
+		if ( get_option( 'grill_options' ) != NULL ) {
+			$grill_options = get_option( 'grill_options' );
 		}
+
+		$api_key = ( $grill_options != NULL ) ? $grill_options['_gmaps_api_key'] : '';
 		
+		define('GOOGLE_API_KEY', $api_key );
 		define('GRILL_DIR', plugin_dir_path( __FILE__) );
 		define('GRILL_TEMPLATE_PATH', GRILL_DIR.'templates/');
 		define('GRILL_URL', plugins_url('/' . basename(GRILL_DIR)));
@@ -174,7 +177,7 @@ class Grill_Core {
 			wp_enqueue_style( 'fontawesome'	, GRILL_URL . '/assets/css/font-awesome.min.css', false, '4.2.0');
 		}
 
-		if ( ! isset( $grill_options['_exclude_gmaps'] ) ) {
+		if ( ! isset( $grill_options['_exclude_gmaps'] ) && GOOGLE_API_KEY != NULL ) {
 			wp_enqueue_script( 'gmap', 'https://maps.google.com/maps/api/js?sensor=false&key='.GOOGLE_API_KEY, array( 'jquery' ) );
 		}
 		
@@ -190,6 +193,7 @@ class Grill_Core {
 
 	/* Register Plugin Styles & Scripts */
 	function register_styles() {
+	
 /*
 		$grill_options = get_option( 'grill_options' );
 		if ( ! isset( $grill_options['_exclude_gmaps'] ) ) {
@@ -243,11 +247,9 @@ function grill_get_post_types() {
 	$grill_post_types = array(
  		'grill/post-types/donate.php',
  		'grill/post-types/faq.php',
- 		'grill/post-types/location.php',
 		'grill/post-types/project.php',
  		'grill/post-types/outreach.php',
  		'grill/post-types/team.php',
- 		'grill/post-types/testimonial.php',
  		'grill/post-types/slider.php'
 	);
 	

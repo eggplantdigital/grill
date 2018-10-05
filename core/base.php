@@ -457,7 +457,7 @@ class Grill_Post_Types {
 			
 			// Cycle thourgh the meta box array.
 			foreach ( $this->metaboxes as $id => $settings ) {
-				
+
 				// 'background' is a preset type, so add its own particular structure.
 				if ( $id=='background' ) {
 					

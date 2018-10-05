@@ -30,6 +30,7 @@ get_header(); ?>
 			<?php
 			if ( locate_template( array("grill/content-single-{$post_type}.php")) != '' ||
 				 file_exists( GRILL_TEMPLATE_PATH . "content-single-{$post_type}.php" )) :
+				
 				grill_get_template_part( "content", "single-{$post_type}" );
 			else :
 				grill_get_template_part( 'content', 'single-article' );
