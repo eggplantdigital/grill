@@ -6,7 +6,7 @@ if ( ! class_exists( 'Grill_Post_Type_Settings' ) ) :
  * Includes the functions to add settings for each post type.
  *
  * @package		Grill
- * @since		1.6.0
+ * @since		1.0.0
  */
 class Grill_Post_Type_Settings {
 	/**

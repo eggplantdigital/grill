@@ -510,7 +510,7 @@ if ( ! in_array( get_post_type( $post_id ), (array) $this->_meta_box['pages'], t
  * This class is called within the Grill_Post_Types class with predefined options.
  *
  * @package		Grill
- * @since		1.5.0
+ * @since		1.0.0
  */
 class Grill_Background_Meta_Box extends Grill_Meta_Box {
 	
@@ -608,7 +608,7 @@ class Grill_Background_Meta_Box extends Grill_Meta_Box {
         wp_enqueue_media();
         
         // Enqueue metabox styling
-		wp_enqueue_style(  'grill-meta-css', GRILL_URL.'/assets/css/meta.css', false, '1.5.0' );
+		wp_enqueue_style(  'grill-meta-css', GRILL_URL.'/assets/css/meta.css', false, '1.0.0' );
 
 		// Enqueue the stylesheet for the color picker.
 		wp_enqueue_style( 'wp-color-picker' );
@@ -633,7 +633,7 @@ class Grill_Background_Meta_Box extends Grill_Meta_Box {
  * This class is called within the Grill_Post_Types class with predefined options.
  *
  * @package		Grill
- * @since		1.6.0
+ * @since		1.0.0
  */
 class Grill_Link_Meta_Box extends Grill_Meta_Box {
 	
@@ -698,7 +698,7 @@ class Grill_Link_Meta_Box extends Grill_Meta_Box {
  * This class is called within the Grill_Post_Types class with predefined options.
  *
  * @package		Grill
- * @since		1.6.0
+ * @since		1.0.0
  */
 class Grill_Text_Meta_Box extends Grill_Meta_Box {
 	
@@ -793,7 +793,7 @@ Icon size
 Icon Border
  *
  * @package		Grill
- * @since		1.6.0
+ * @since		1.0.0
  */
 class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 	
@@ -879,7 +879,7 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 		wp_enqueue_script( 'grill-meta-fa-js', GRILL_URL . '/assets/js/meta.fa.js', array( 'jquery' ));	
         
         // Enqueue metabox styling
-		wp_enqueue_style( 'grill-meta-css', GRILL_URL.'/assets/css/meta.css', false, '1.5.0' );
+		wp_enqueue_style( 'grill-meta-css', GRILL_URL.'/assets/css/meta.css', false, '1.0.0' );
 
 		// Enqueue the stylesheet for the color picker.
 		wp_enqueue_style( 'wp-color-picker' );

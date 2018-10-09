@@ -4,7 +4,6 @@
  *
  * Functions for the templating system.
  *
- * @author   CharityThemes
  * @category Core
  * @package  Grill/Functions
  * @version  1.0.1

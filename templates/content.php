@@ -1,5 +1,14 @@
 <?php
-	
+/**
+ * Template for selecting the template file based on the post type
+ *
+ * This template can be overridden by copying it to yourtheme/grill/content.php.
+ *
+ * @see 	    
+ * @package 	Grill/Templates
+ * @version     1.0.1
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }

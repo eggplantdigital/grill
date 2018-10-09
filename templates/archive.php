@@ -26,12 +26,12 @@ get_header(); ?>
 		do_action( 'grill_before_main_content' );
 	?>
 
-		<?php // TODO 
-			//if ( apply_filters( 'grill_show_page_title', true ) ) : ?>
-
-			<h1 class="page-title"><?php //grill_page_title(); ?></h1>
-
-		<?php //endif; ?>
+		<?php
+		if ( apply_filters( 'grill_show_page_title', true ) ) :
+			the_archive_title( '<h1 class="page-title">', '</h1>' );
+			the_archive_description( '<div class="taxonomy-description">', '</div>' );
+		endif;
+		?>	
 
 		<?php if ( have_posts() ) : ?>
 
@@ -44,15 +44,9 @@ get_header(); ?>
 				do_action( 'grill_before_loop' );
 			?>
 			
-			<?php $grid = new Grill_Grid(); ?>
-				
 				<?php while ( have_posts() ) : the_post(); ?>	
 			
-					<?php $grid->begin(); ?>
-					
 					<?php grill_get_post_template(); ?>
-					
-					<?php $grid->finish(); ?>
 					
 				<?php endwhile; // end the loop ?>	
 				

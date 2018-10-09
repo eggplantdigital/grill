@@ -6,7 +6,7 @@ if ( ! class_exists( 'Grill_Post_Types_Init' ) ) :
  * This class initiates the grill post types framework.
  *
  * @package		Grill
- * @since		1.6.0
+ * @since		1.0.0
  */
 class Grill_Post_Types_Init {
 	

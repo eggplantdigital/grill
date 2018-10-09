@@ -74,7 +74,7 @@ if (!function_exists('grill_post_background_image')) :
  *     @type bool   		$echo   Whether to echo or return the title. Default true for echo.
  * 
  * @return string CSS that can be used on a HTML tag to display the background.
- * @since Grill 1.5.0 
+ * @since Grill 1.0.0 
  */
 function grill_post_background_image( $args='' ) {
 	
@@ -266,4 +266,16 @@ function grill_get_loop_class( $class ) {
 function grill_loop_class( $class = '' ) {
 	// Separates classes with a single space, collates classes for body element
 	echo 'class="' . join( ' ', grill_get_loop_class( $class ) ) . '"';
+}
+
+function grill_hex2rgb($hexColor) {
+	$shorthand = (strlen($hexColor) == 4);
+	
+	list($r, $g, $b) = $shorthand? sscanf($hexColor, "#%1s%1s%1s") : sscanf($hexColor, "#%2s%2s%2s");
+	
+	return [
+		"r" => hexdec($shorthand? "$r$r" : $r),
+		"g" => hexdec($shorthand? "$g$g" : $g),
+		"b" => hexdec($shorthand? "$b$b" : $b)
+	];
 }

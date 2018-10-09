@@ -6,7 +6,7 @@ if ( ! class_exists( 'Grill_Post_Type_Shortcodes' ) ) :
  * Includes all the functions to add shortcodes for each post type.
  *
  * @package		Grill
- * @since		1.6.0
+ * @since		1.0.0
  */
 class Grill_Post_Type_Shortcodes {
 	
@@ -130,8 +130,8 @@ class Grill_Post_Type_Shortcodes {
 	function enqueue() {
 		
 		// Enqueue the JS and CSS to insert a post type in the MCE editor.
-		wp_enqueue_script( 'grill-insert-shortcode', GRILL_URL . '/assets/js/insert-content.js', array( 'jquery' ), '1.5.0');
-	    wp_enqueue_style( 'grill-insert-shortcode', GRILL_URL . '/assets/css/insert-content.css', false, '1.5.0' );
+		wp_enqueue_script( 'grill-insert-shortcode', GRILL_URL . '/assets/js/insert-content.js', array( 'jquery' ), '1.0.0');
+	    wp_enqueue_style( 'grill-insert-shortcode', GRILL_URL . '/assets/css/insert-content.css', false, '1.0.0' );
 
 		// Add an iframe function to display content for the media upload page.
 		wp_iframe( array( &$this, 'render') );		

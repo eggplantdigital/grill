@@ -26,7 +26,7 @@ jQuery( document ).ready( function( $ ) {
 	/**
 	 * Ajax to send the shortcode to the editor 
 	 *
-	 * @since 1.5.0
+	 * @since 1.0.0
 	 */
 	$('#grill_form_create_shortcode').submit(function(){
 

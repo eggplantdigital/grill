@@ -1,13 +1,35 @@
 <?php
 /**
- * Plugin Name: Grill
- * Plugin URI: https://wordpress.org/plugins/grill
- * Description: Grill let's you install a bunch of content types to use within your WordPress site
- * Version: 1.0.1
- * Author: Eggplant Digital
- * Author URI: https://eggplantdigital.cn
- * License: A "Slug" license name e.g. GPL2
+ * @package Grill
  */
+/*
+Plugin Name: Grill
+Plugin URI: https://charitythemes.org/
+Description: Use Grill to add Projects, FAQs and Team members to your WordPress blog and provides developers with a useful framework to create your own Post Types.
+Version: 1.0.1
+Author: Eggplant Digital
+Author URI: https://eggplantdigital.cn
+License: GPLv2 or later
+Text Domain: grill
+*/ 
+
+/*
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Copyright 2005-2015 Eggplant Digital Co. Ltd.
+*/
 
 /**
  * Main Grill Class
@@ -85,17 +107,10 @@ class Grill_Core {
 	 * Grill Constructor.
 	 */
 	public function __construct() {
-/*
-		$this->define_constants();
-		$this->includes();
-		$this->init_hooks();
-*/
 
-// 	public function init() {
 		define('GRILL_VERSION', '1.0.1');
-		define('GRILL_MIN_WP_VERSION', '3.5');
+		define('GRILL_MIN_WP_VERSION', '4.0');
 
-		// TODO MOVE THIS
 		$grill_options = array();
 		
 		if ( get_option( 'grill_options' ) != NULL ) {
@@ -193,13 +208,6 @@ class Grill_Core {
 
 	/* Register Plugin Styles & Scripts */
 	function register_styles() {
-	
-/*
-		$grill_options = get_option( 'grill_options' );
-		if ( ! isset( $grill_options['_exclude_gmaps'] ) ) {
-			wp_enqueue_script( 'gmap', 'https://maps.google.com/maps/api/js?sensor=false&key='.GOOGLE_API_KEY, array( 'jquery' ) );
-		}
-*/
 	}
 		
     /* Plugin activation */
@@ -214,7 +222,6 @@ class Grill_Core {
 	
 	function grill_init() {
 		require_once( GRILL_DIR .'/composer/params.php' );
-		require_once( GRILL_DIR .'/composer/shortcodes.php' );
 		require_once( GRILL_DIR .'/composer/map.php' );
 	}
 

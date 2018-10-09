@@ -37,6 +37,10 @@
 .ico-holder.ico-size-large .fa { font-size: 300%; }
 .ico-holder.ico-size-huge .fa { font-size: 400%; }
 
+.ico-holder:hover {
+	opacity: 0.8;
+}
+
 /*****
 /*  ~circular images
 *****/

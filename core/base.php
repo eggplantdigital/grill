@@ -1,13 +1,13 @@
 <?php
 if ( ! class_exists( 'Grill_Post_Types' ) ) :
 /**
- * Base class to create a Post Type for Grill or a Child Theme 
+ * Base class to create a Post Type for Grill 
  *
  * this class should be extended in a new class,
  * and certain method must be overrided to apply your custom post types
  *
  * @package		Grill
- * @since		1.6.0
+ * @since		1.0.0
  */
 class Grill_Post_Types {
 

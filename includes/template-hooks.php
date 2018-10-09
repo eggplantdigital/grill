@@ -2,8 +2,6 @@
 /**
  * Template Hooks
  *
- * XXX
- *
  * @package		WordPress
  * @subpack		Grill
  * @since		Grill 1.0.1
