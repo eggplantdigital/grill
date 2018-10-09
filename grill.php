@@ -196,12 +196,10 @@ class Grill_Core {
 			wp_enqueue_script( 'gmap', 'https://maps.google.com/maps/api/js?sensor=false&key='.GOOGLE_API_KEY, array( 'jquery' ) );
 		}
 		
-		wp_enqueue_style( 'bxslider', GRILL_URL . '/assets/css/bxslider.min.css', false, '1.1.0');
 		wp_enqueue_style( 'mfp', GRILL_URL . '/assets/css/magnific-popup.min.css', false, '1.1.0');
 		wp_enqueue_style( 'social', GRILL_URL . '/assets/css/social.css', false, '1.0');
 		wp_enqueue_style( 'grill-main', GRILL_URL . '/assets/css/grill.css', false, '1.0.0');
 		
-		wp_enqueue_script( 'bxslider', GRILL_URL . '/assets/js/bxslider.min.js', array('jquery'), '1.1.0', true );
 		wp_enqueue_script( 'mfp', GRILL_URL . '/assets/js/magnific-popup.min.js', array('jquery'), '1.1.0', true );
 		wp_enqueue_script( 'grill_global', GRILL_URL . '/assets/js/global.js', array('jquery'), '1.0.0', true );
 	}
