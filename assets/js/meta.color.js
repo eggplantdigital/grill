@@ -1,0 +1,1 @@
+jQuery( document ).ready( function() {$('.grill-select-color').wpColorPicker();});

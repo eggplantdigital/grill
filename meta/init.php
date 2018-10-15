@@ -40,8 +40,32 @@ class Grill_Meta_Box {
 		$this->_meta_box = $args;
 		
 		$this->post_type = $post_type;
-
+		
+		$this->include_fields();
 		$this->init();
+	}
+
+	/**
+	 * Include Required Fields
+	 *
+	 * Register the hooks to add the meta and save it.
+	 *
+	 * @link http://codex.wordpress.org/Function_Reference/add_action
+	 */
+	public function include_fields() {
+
+		if ( $this->_meta_box['fields'] ) {
+
+			foreach ( $this->_meta_box['fields'] as $field ) {
+	
+				// Include the field template file.		
+				$type = $field['type'];
+				$field_format = GRILL_DIR . "meta/fields/{$type}.php";
+				if ( file_exists( $field_format )) {
+					include_once( $field_format );
+				}
+			}
+		}
 	}
 
 	/**
@@ -52,7 +76,6 @@ class Grill_Meta_Box {
 	 * @link http://codex.wordpress.org/Function_Reference/add_action
 	 */
 	public function init() {
-		
 		add_action( 'dbx_post_advanced', array( &$this, 'init_fields_for_post' ) );
 		
 		// Enqueue scripts used with the default meta boxes.
@@ -65,7 +88,7 @@ class Grill_Meta_Box {
 
 		// Save the post when it's updated.
 		add_action( 'save_post', array( &$this, 'save_post_meta' ) );
-
+		
 	}
 
 	/**
@@ -93,14 +116,16 @@ class Grill_Meta_Box {
 					$field = new Grill_Group( $field['id'], $field['label'], $value, $args );				
 					
 				} else {
-	
-					$field = new Grill_Field( $field['id'], $field['label'], $value, $args );
-					
+
+					// Init the field class
+					$className = 'Grill_Field_'.$field['type'];				
+					if ( class_exists( $className ) )
+						$field = new $className( $field['id'], $field['label'], $value, $args );
 				}
 	
-	//			if ( $field->is_displayed( $post_id ) ) {
+				//if ( $field->is_displayed( $post_id ) ) {
 					$this->fields[] = $field;
-	//			}
+				//}
 			}
 		}
 	}
@@ -118,16 +143,16 @@ class Grill_Meta_Box {
 		
 		global $post;
 		$post_id = null;
-		
+
 		// Get the current ID.
 		if ( isset( $_GET['post'] ) ) {
-			$post_id = wp_unslash( $_GET['post'] );
+			$post_id = absint( $_GET['post'] );
 		} elseif ( isset( $_POST['post_ID'] ) ) {
-			$post_id = wp_unslash( $_POST['post_ID'] );
+			$post_id = absint( $_POST['post_ID'] );
 		} elseif ( ! empty( $post->ID ) ) {
-			$post_id = $post->ID;
+			$post_id = absint( $post->ID );
 		}
-		
+
 		if ( is_page() || ! isset( $post_id ) ) {
 			return false;
 		}
@@ -135,8 +160,8 @@ class Grill_Meta_Box {
 		if ( ! is_numeric( $post_id ) || $post_id != floor( $post_id ) ) {
 			return false;
 		}
-		
-		$this->init_fields( (int) $post_id );
+
+		$this->init_fields( $post_id );
 	}
 
 	/**
@@ -146,6 +171,7 @@ class Grill_Meta_Box {
 	 */
 	public function enqueue_scripts() {
 		
+/*
 		wp_enqueue_style( 'select2', GRILL_URL . '/assets/css/select2.min.css' );
 		wp_enqueue_script( 'select2', GRILL_URL . '/assets/js/select2.min.js', array('jquery') );
 		//wp_enqueue_script( 'grill-meta-select2-js', GRILL_URL . '/assets/js/meta.select2.js', array( 'jquery', 'select2' ) ); 
@@ -161,6 +187,7 @@ class Grill_Meta_Box {
 		foreach ( $this->fields as $field ) {
 			$field->enqueue_scripts();
 		}		   
+*/
 	}
 	
 	/**
@@ -171,11 +198,6 @@ class Grill_Meta_Box {
 	function enqueue_styles() {
 		
 		wp_enqueue_style(  'grill-meta-styles', GRILL_URL . '/assets/css/meta.css', false, '1.0.0' );
-		wp_enqueue_style( 'fontawesome'	, GRILL_URL . '/assets/css/font-awesome.min.css', false, '4.2.0');	
-
-		foreach ( $this->fields as $field ) {
-			$field->enqueue_styles();
-		}
 	}
 	
    /**
@@ -232,9 +254,7 @@ class Grill_Meta_Box {
 	 */
 	public function render() {
 		?>
-
 		<input type="hidden" name="grill_metabox_nonce" value="<?php esc_attr_e( wp_create_nonce( basename( __FILE__ ) ) ); ?>" />
-
 		<?php 
 		$this->render_fields( $this->fields );
 	}
@@ -257,6 +277,9 @@ class Grill_Meta_Box {
 			
 		foreach ( $fields as $field ) :
 			
+			if ( ! is_object($field) )
+				continue;
+
 			if ( $field->args['type'] == 'section' ) :
 
 				if ( $section ) : 
@@ -348,7 +371,10 @@ if ( isset( $field->args['confirm_delete'] ) ) {
 		$tabs='';
 		// Loop through the fields
 		foreach ( $fields as $field ) {
-			
+
+			if ( ! is_object($field) )
+				continue;
+		
 			// If the type is a section, we need to create a tab.
 			if ( $field->args['type'] == 'section' ) {
 				// Create a tab item.
@@ -424,6 +450,7 @@ if ( ! in_array( get_post_type( $post_id ), (array) $this->_meta_box['pages'], t
 	 * @param integer $post_id Pass the ID of the post we are saving
 	 */	
 	public function save_post_meta( $post_id ) {
+		
 		// Call the function to verify we should be here.
 	    if ( ! $this->verify_post_meta( $post_id ) ) :
 			
@@ -443,9 +470,11 @@ if ( ! in_array( get_post_type( $post_id ), (array) $this->_meta_box['pages'], t
 					$field_obj = new Grill_Group( $field['id'], $field['label'], $value, $field );				
 					
 				} else {
-	
-					$field_obj = new Grill_Field( $field['id'], $field['label'], $value, $field );
 					
+					$type = $field['type'];
+					$className = "Grill_Field_{$type}";
+					if ( class_exists( $className ) )
+						$field_obj = new $className( $field['id'], $field['label'], $value, $field );				
 				}
 				
 				$field_obj->save( $post_id, $value );
@@ -816,8 +845,6 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 		// Set the post type that this meta box should display on
 		$this->post_type = $post_type;
 		
-		$fa_list = $this->get_fontawesome_icons_list();
-		
 		// Create the settings for this meta box 
 		$this->_meta_box = array(
 			'id'		 => 'fontawesome',
@@ -829,7 +856,6 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
 					'label'   => __('Select an icon', 'grill'),
 					'id'      => '_fontawesome_font',
 					'type'    => 'fontawesome',
-					'options' => $fa_list,
 					'width'   => 50
 				),
 				array(
@@ -890,37 +916,5 @@ class Grill_FontAwesome_Meta_Box extends Grill_Meta_Box {
         // Enqueue fontawesome to load on the backend.
     	wp_enqueue_style( 'fontawesome'	, GRILL_URL . '/assets/css/font-awesome.min.css', false, '4.2.1');        
 	}
-		
-	/**
-	 * FontAwesome 4.6.3 json list
-	 *
-	 * A helpful list FontAwesome fonts for use within the beautiful meta fields of this theme.
-	 *
-	 * @link https://github.com/FortAwesome/Font-Awesome/blob/master/src/icons.yml
-	 * @link converted to json with help from http://yamltojson.com/
-	 */
- 	public function get_fontawesome_icons_list() {
- 		
-		$fa_json  = wp_remote_fopen( GRILL_URL . '/assets/fonts/fontawesome.json' );
-
-		return $this->json_decode( $fa_json, true );
-	}
-	
-	/**
-	 * Decode JSON
-	 *
-	 * Attempts to decode json into an array.
-	 * This new function accounts for servers
-	 * running an older version of PHP with
-	 * magic quotes gpc enabled.
-	 * 
-	 * @param  string  $str   - JSON string to convert into an array
-	 * @param  boolean $accoc [- Whether to return an associative array
-	 * @return array - Decoded JSON array
-	 */
-	public static function json_decode( $str = '', $accoc = false ) {
-		$json_string = get_magic_quotes_gpc() ? stripslashes( $str ) : $str;
-		return json_decode( $json_string, $accoc );
-	}    	
 }
 endif;

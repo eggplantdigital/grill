@@ -1,4 +1,13 @@
 <?php
+/**
+ * Class to create each metabox field.
+ *
+ * This class is called within the Grill_Post_Types class
+ * the options are set within extension class in the metabox_options function.
+ *
+ * @package		Grill
+ * @since		1.0.0
+ */	
 class Grill_Field {
 
 	/**
@@ -24,15 +33,15 @@ class Grill_Field {
 	 * @param array  $args Optional. Field definitions/arguments.
 	 */
 	public function __construct( $name, $label, $value, $args = array() ) {
-		
+
 		$this->id    = $name;
-		$this->name  = $name/*  . '[]' */;
+		$this->name  = $name/*.'[]'*/;
 		$this->label = $label;
 		$this->value = $value;
 		$this->set_arguments( $args );
-		
-		add_action( 'admin_init', array( $this, 'enqueue_scripts' ) );
-		add_action( 'admin_init', array( $this, 'enqueue_styles' ) );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 	}
 	
 	/**
@@ -79,10 +88,6 @@ class Grill_Field {
 	 * @uses wp_enqueue_script()
 	 */
 	public function enqueue_scripts() {
-		$grill_options = get_option( 'grill_options' );
-		if ( $this->args['type'] == 'gmap' && ! isset( $grill_options['_exclude_gmaps'] ) ) {
-			wp_enqueue_script( 'gmap', 'https://maps.google.com/maps/api/js?sensor=false&key='.GOOGLE_API_KEY, array( 'jquery' ) );
-		}
 	}
 
 	/**
@@ -108,23 +113,16 @@ class Grill_Field {
 
 		// Print label if necessary.
 		$this->label();
-
 		?>
-
 		<div class="grill-field-holder">
-
 			<?php $this->get_field(); ?>
-
 		</div>
-
 		<?php
-
 		// Print description if necessary.
 		$this->description();
 
 		// Close of the field
 		$this->get_field_wrapper_end();
-		
 	}
 	
 	/**
@@ -133,20 +131,7 @@ class Grill_Field {
 	 *
 	 * 
 	 */		
-	function get_field() {
-
-		$field = $this->args['type'];
-
-		$field_format = GRILL_DIR . "meta/fields/{$this->args['type']}.php";
-
-		$field_format = apply_filters( 'grill_metabox_render_field', $field_format, $field );
-		
-		// Include the template file.		
-		if ( file_exists( $field_format )) {
-			include( $field_format );
-		}
-
-	}
+	function get_field() {}
 
 	/**
 	 * 
@@ -304,7 +289,6 @@ class Grill_Field {
 	 * @return mixed
 	 */
 	public function get_value() {
-		
 		return ( $this->value || '0' === $this->value  ) ? $this->value : $this->args['std'];
 	}
 
@@ -365,6 +349,7 @@ class Grill_Field {
 		// Get the post meta for the current field
         $old = get_post_meta( $post_id, $this->id, true );
 
+		// Parse and validate values
 		$this->parse_save_value();
 
         // If there is a difference between the 'new' posted field and the 'old' saved field
@@ -403,4 +388,21 @@ class Grill_Field {
 	    return true;
 	}
 
+	
+	/**
+	 * Decode JSON
+	 *
+	 * Attempts to decode json into an array.
+	 * This new function accounts for servers
+	 * running an older version of PHP with
+	 * magic quotes gpc enabled.
+	 * 
+	 * @param  string  $str   - JSON string to convert into an array
+	 * @param  boolean $accoc [- Whether to return an associative array
+	 * @return array - Decoded JSON array
+	 */
+	public static function json_decode( $str = '', $accoc = false ) {
+		$json_string = get_magic_quotes_gpc() ? stripslashes( $str ) : $str;
+		return json_decode( $json_string, $accoc );
+	}
 }

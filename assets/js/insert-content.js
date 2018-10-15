@@ -46,7 +46,7 @@ jQuery( document ).ready( function( $ ) {
 	        dataType:	'json',
 	        data:       { 
 	        	"action": "grill_create_shortcode", 
-	        	/* "nonce": nonce, */ 
+	        	"nonce": grill_sc_vars._nonce, 
 	        	"data": data 
 	        },
 	        beforeSend: function(){

@@ -75,11 +75,19 @@ class Grill_Post_Type_Shortcodes {
 	 */
 	function create_shortcode() {
 		
-		// Get the data posted when clicking insert.
-		$posted = $_POST['data'];
+		// Validate data is passed and that it is a string
+		if ( ! isset( $_POST['data'] ) || ! is_string( $_POST['data'] ) || ! isset( $_POST['nonce'] ))
+			return false;
+
+		// Validate security Nonce
+		if ( ! wp_verify_nonce( $_POST['nonce'], 'grill-insert-sc' ) )
+			return false;
+			
+		// Get the santized data posted when clicking insert.
+		$posted = sanitize_text_field( $_POST['data'] );
 		
 		// Parse the data into and array.
-		parse_str($posted, $parsed_data);
+		parse_str( $posted, $parsed_data );
 		
 		// Add the shortcode value into the output.
 		$output = '[' . $parsed_data['shortcode'];
@@ -99,7 +107,7 @@ class Grill_Post_Type_Shortcodes {
 		echo json_encode(
 			array(
 				'response' 	=> 'success', 
-				'shortcode' => $output
+				'shortcode' => esc_html( $output )
 			)
 		);
 		
@@ -131,6 +139,10 @@ class Grill_Post_Type_Shortcodes {
 		
 		// Enqueue the JS and CSS to insert a post type in the MCE editor.
 		wp_enqueue_script( 'grill-insert-shortcode', GRILL_URL . '/assets/js/insert-content.js', array( 'jquery' ), '1.0.0');
+		wp_localize_script( 'grill-insert-shortcode', 'grill_sc_vars', array(
+			'_nonce' => wp_create_nonce( 'grill-insert-sc' )
+		));
+
 	    wp_enqueue_style( 'grill-insert-shortcode', GRILL_URL . '/assets/css/insert-content.css', false, '1.0.0' );
 
 		// Add an iframe function to display content for the media upload page.

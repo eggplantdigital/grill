@@ -7,7 +7,6 @@ if ( class_exists( 'Grill_Post_Types' ) ) :
  * Dashicon: dashicons-groups
  * Version: 1.0.0
  */
-
 $args = array( 
 	'singular'  => 'Team',
 	'plural'    => 'Teams',
@@ -23,48 +22,48 @@ $team->register_metabox( 'team_members_details', array(
 	'context'    => 'normal',
 	'priority'   => 'high',
 	'fields'     => array(
-	array(
-		'label' => __('Gravatar Email', 'grill'),
-		'desc' => sprintf( __( 'Enter an e-mail address, to use a %sGravatar%s, instead of using the "Featured Image".', 'grill' ), '<a href="' . esc_url( 'http://gravatar.com/' ) . '" target="_blank">', '</a>' ),
-		'id'   => '_team_gravatar',
-		'type' => 'text',
-		'width'=> 50
-	),
-	array(
-		'label' => __('Position', 'grill'),
-		'desc' => __('Enter the position for the team member (eg. "Managing Director")', 'grill'),
-		'id'   => '_team_position',
-		'type' => 'text',
-		'width'=> 50
-	),
-	array(
-		'label' => __('Facebook', 'grill'),
-		'desc' => __('URL to Facebook page', 'grill'),
-		'id'   => '_team_facebook',
-		'type' => 'text',
-		'width'=> 25
-	),
-	array(
-		'label' => __('Twitter', 'grill'),
-		'desc' => __('URL to Twitter account', 'grill'),
-		'id'   => '_team_twitter',
-		'type' => 'text',
-		'width'=> 25
-	),
-	array(
-		'label' => __('Linkedin', 'grill'),
-		'desc' => __('URL to Linkedin page', 'grill'),
-		'id'   => '_team_linkedin',
-		'type' => 'text',
-		'width'=> 25
-	),
-	array(
-		'label' => __('Instagram', 'grill'),
-		'desc' => __('URL to Instagram account', 'grill'),
-		'id'   => '_team_instagram',
-		'type' => 'text',
-		'width'=> 25
-	)	
+		array(
+			'label' => __('Gravatar Email', 'grill'),
+			'desc' => sprintf( __( 'Enter an e-mail address, to use a %sGravatar%s, instead of using the "Featured Image".', 'grill' ), '<a href="' . esc_url( 'http://gravatar.com/' ) . '" target="_blank">', '</a>' ),
+			'id'   => '_team_gravatar',
+			'type' => 'text',
+			'width'=> 50
+		),
+		array(
+			'label' => __('Position', 'grill'),
+			'desc' => __('Enter the position for the team member (eg. "Managing Director")', 'grill'),
+			'id'   => '_team_position',
+			'type' => 'text',
+			'width'=> 50
+		),
+		array(
+			'label' => __('Facebook', 'grill'),
+			'desc' => __('URL to Facebook page', 'grill'),
+			'id'   => '_team_facebook',
+			'type' => 'text',
+			'width'=> 25
+		),
+		array(
+			'label' => __('Twitter', 'grill'),
+			'desc' => __('URL to Twitter account', 'grill'),
+			'id'   => '_team_twitter',
+			'type' => 'text',
+			'width'=> 25
+		),
+		array(
+			'label' => __('Linkedin', 'grill'),
+			'desc' => __('URL to Linkedin page', 'grill'),
+			'id'   => '_team_linkedin',
+			'type' => 'text',
+			'width'=> 25
+		),
+		array(
+			'label' => __('Instagram', 'grill'),
+			'desc' => __('URL to Instagram account', 'grill'),
+			'id'   => '_team_instagram',
+			'type' => 'text',
+			'width'=> 25
+		),
 ) ) );
 
 $team->register_taxonomy( 'team_group', array(
