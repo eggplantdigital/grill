@@ -6,7 +6,7 @@
 Plugin Name: Grill
 Plugin URI: https://charitythemes.org/
 Description: Use Grill to add Projects, FAQs and Team members to your WordPress blog and provides developers with a useful framework to create your own Post Types.
-Version: 1.0.1
+Version: 1.0.2
 Author: Eggplant Digital
 Author URI: https://eggplantdigital.cn
 License: GPLv2 or later

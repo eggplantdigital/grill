@@ -6,6 +6,7 @@ if ( $icon = get_post_meta( get_the_ID(), '_fontawesome_font', true ) ) :
 	$icon_color    = get_post_meta( get_the_ID(), '_fontawesome_color', true );
 	
 	if ( $icon_bg_color ) {
+		$icon_bg_color = esc_attr($icon_bg_color);
 		$convert = grill_hex2rgb($icon_bg_color);
 		$icon_bg_color = 'rgba('.$convert['r'].', '.$convert['g'].', '.$convert['b'].', 0.5)';	
 	}
@@ -18,13 +19,13 @@ if ( $icon = get_post_meta( get_the_ID(), '_fontawesome_font', true ) ) :
 	}
 	
 	$popup = ( grill_get_setting('type') == 2 ) ? ' popup' : '';
-	$style = 'style="'.$background.'; color:'.$icon_color.';"';
-	$class = 'ico-holder ico-size-'.$icon_size.' '.$popup;
+	$style = 'style="'.$background.'; color:'.esc_attr($icon_color).';"';
+	$class = 'ico-holder ico-size-'.esc_attr($icon_size).' '.$popup;
 	$tag   = ( grill_get_setting('type') != 3 ) ? 'a' : 'span';
 
 	$before_html = '<'.$tag.' class="'.$class.'" href="'.get_permalink().'" title="'.get_the_title().'" '.$style.'>';
 	$after_html  = '</'.$tag.'>';
 	
-	echo $before_html.'<i class="fa fa-'.$icon.'"></i>'.$after_html;
+	echo $before_html.'<i class="fa fa-'.esc_attr( $icon ).'"></i>'.$after_html;
 
 endif;

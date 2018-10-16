@@ -10,10 +10,10 @@ if ( $fa || $tw || $li || $in ) :
 	<ul class="ico-social color square tiny">
 		<?php
 		$social = array(
-			array( 'facebook', $fa, __('Connect with me on Facebook', 'grill') ),
-			array( 'twitter', $tw, __('Follow me on Twitter', 'grill') ),
-			array( 'linkedin', $li, __('Connect with me on Linkedin', 'grill') ),
-			array( 'instagram', $in, __('Follow me on Instagram', 'grill') ),
+			array( 'facebook', esc_attr($fa), __('Connect with me on Facebook', 'grill') ),
+			array( 'twitter', esc_attr($tw), __('Follow me on Twitter', 'grill') ),
+			array( 'linkedin', esc_attr($li), __('Connect with me on Linkedin', 'grill') ),
+			array( 'instagram', esc_attr($in), __('Follow me on Instagram', 'grill') ),
 		);
 		
 		foreach ( $social as $ico ) :

@@ -41,6 +41,12 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
  
 == Changelog ==
+
+= 1.0.2 =
+*Release Date - 16th October, 2018*
+
+* Sanitize, validate and escape all data in the meta field classes
+* Escape output of post meta strings
  
 = 1.0.1 =
 *Release Date - 9th October, 2018*

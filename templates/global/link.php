@@ -18,5 +18,5 @@ if ( ! $text )
 	$text = __('Learn More', 'grill');	
 
 if ( ! is_single() ) : ?>
-	<a href="<?php echo $link; ?>" class="button <?php echo $popup; ?>"><?php echo $text; ?></a>
+	<a href="<?php echo esc_attr($link); ?>" class="button <?php echo $popup; ?>"><?php echo esc_attr($text); ?></a>
 <?php endif;
