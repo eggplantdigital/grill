@@ -155,32 +155,32 @@ class Grill_Settings {
 			<h1><?php _e('Grill Settings', 'grill'); ?></h1>
 
 			<h2 class="nav-tab-wrapper">
-				<a href="options-general.php?page=grill-post-types" class="nav-tab <?php echo ( $_GET['page'] == 'grill-post-types' ) ? 'nav-tab-active':''; ?>">
+				<a href="options-general.php?page=grill-post-types" class="nav-tab <?php echo ( isset( $_GET['page'] ) && $_GET['page'] == 'grill-post-types' ) ? 'nav-tab-active':''; ?>">
 					<?php _e('Post Types', 'grill'); ?>
 				</a>
-				<a href="options-general.php?page=grill-post-type-settings" class="nav-tab <?php echo ( $_GET['page'] == 'grill-post-type-settings' ) ? 'nav-tab-active':''; ?>">
+				<a href="options-general.php?page=grill-post-type-settings" class="nav-tab <?php echo ( isset( $_GET['page'] ) && $_GET['page'] == 'grill-post-type-settings' ) ? 'nav-tab-active':''; ?>">
 					<?php _e('Post Type Settings', 'grill'); ?>
 				</a>
-				<a href="options-general.php?page=grill-settings" class="nav-tab <?php echo ( $_GET['page'] == 'grill-settings' ) ? 'nav-tab-active':''; ?>">
+				<a href="options-general.php?page=grill-settings" class="nav-tab <?php echo ( isset( $_GET['page'] ) && $_GET['page'] == 'grill-settings' ) ? 'nav-tab-active':''; ?>">
 					<?php _e('Options', 'grill'); ?>
 				</a>
 			</h2>
 
 			<form action='options.php' method='post'>
 				<?php
-				if ( $_GET['page'] == 'grill-settings' ) {
+				if ( isset( $_GET['page'] ) && $_GET['page'] == 'grill-settings' ) {
 					
 					settings_fields( 'grill-general-settings' );
 					do_settings_sections( 'grill-general-settings' );
 					submit_button();			
 					
-				} elseif ( $_GET['page'] == 'grill-post-types' ) {
+				} elseif ( isset( $_GET['page'] ) && $_GET['page'] == 'grill-post-types' ) {
 					
 					settings_fields( 'grill-post-types' );
 					do_settings_sections( 'grill-post-types' );
 					submit_button();			
 					
-				} elseif ( $_GET['page'] == 'grill-post-type-settings' ) {
+				} elseif ( isset( $_GET['page'] ) && $_GET['page'] == 'grill-post-type-settings' ) {
 									
 					settings_fields( 'grill-settings' );
 					do_settings_sections( 'grill-settings' );
@@ -516,7 +516,7 @@ class Grill_Settings {
 		$options = get_option( 'grill_options' );
 		$field   = '_gmaps_api_key';
 		?>
-		<input type='text' name='grill_options[<?php echo $field; ?>]' value='<?php echo ( isset( $options[$field] ) && $options[$field]!='' ) ? $options[$field] : ''; ?>'>
+		<input type='text' name='grill_options[<?php echo $field; ?>]' value='<?php echo ( isset( $options[$field] ) && $options[$field]!='' ) ? esc_attr( $options[$field] ) : ''; ?>'>
 		
 		<p><?php echo sprintf( __('Visit the <a href="%s" target="_blank">Google APIs Console</a> to create an API key.', 'grill'), 'https://code.google.com/apis/console' ); ?></p>
 		<?php

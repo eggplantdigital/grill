@@ -1,5 +1,5 @@
 === Grill ===
-Contributors: eggplantdigital, charitythemes, alexdodkin
+Contributors: eggplantdigital, charitythemes, alexdodkin, nicholas0612
 Donate link: http://www.charitythemes.org
 Tags: grill, post types, project, faqs, team, framework
 Requires at least: 4.0
@@ -45,7 +45,7 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 1.0.2 =
 *Release Date - 16th October, 2018*
 
-* Sanitize, validate and escape all data in the meta field classes
+* Sanitise, validate and escape all data in the meta field classes
 * Escape output of post meta strings
  
 = 1.0.1 =
